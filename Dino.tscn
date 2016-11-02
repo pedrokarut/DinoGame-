@@ -1,0 +1,97 @@
+[gd_scene load_steps=10 format=1]
+
+[ext_resource path="res://Scenes/Scripts/Dino.gd" type="Script" id=1]
+[ext_resource path="res://Dino/dino.png" type="Texture" id=2]
+[ext_resource path="res://Dino/flying dino.png" type="Texture" id=3]
+[ext_resource path="res://Dino/dino fire.png" type="Texture" id=4]
+[ext_resource path="res://Dino/dino fire 2.png" type="Texture" id=5]
+
+[sub_resource type="CapsuleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 10.0
+height = 20.0
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ { "frames":[ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ) ], "loop":true, "name":"default", "speed":5.0 } ]
+
+[sub_resource type="Animation" id=3]
+
+resource/name = "cuspir fogo"
+length = 0.3
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0 ), "transitions":FloatArray( 1 ), "update":1, "values":[ 3 ] }
+tracks/1/type = "method"
+tracks/1/path = NodePath("../..")
+tracks/1/interp = 1
+tracks/1/imported = false
+tracks/1/keys = { "times":FloatArray( 0.3 ), "transitions":FloatArray( 1 ), "values":[ { "args":[  ], "method":"_voar_novamente" } ] }
+
+[sub_resource type="Animation" id=4]
+
+length = 0.7
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0, 0.3 ), "transitions":FloatArray( 1, 1 ), "update":1, "values":[ 0, 1 ] }
+
+[node name="Dino" type="Node2D"]
+
+transform/pos = Vector2( 391.973, 278.498 )
+script/script = ExtResource( 1 )
+
+[node name="KinematicBody2D" type="KinematicBody2D" parent="."]
+
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 12.5528, 0, 0, 9.03558, 5.02905, -53.4314 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+__meta__ = { "_edit_lock_":true }
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="KinematicBody2D"]
+
+frames = SubResource( 2 )
+animation = "default"
+frame = 3
+__meta__ = { "_edit_lock_":true }
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="KinematicBody2D/AnimatedSprite"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+"anims/cuspir fogo" = SubResource( 3 )
+anims/voar = SubResource( 4 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KinematicBody2D"]
+
+transform/pos = Vector2( 5.02905, -53.4314 )
+transform/scale = Vector2( 12.5528, 9.03558 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+__meta__ = { "_edit_lock_":true }
+
+[node name="Position2D" type="Position2D" parent="."]
+
+transform/pos = Vector2( 125.685, -43.9704 )
+transform/scale = Vector2( 0.936894, 1.03509 )
+__meta__ = { "_edit_lock_":true }
+
+

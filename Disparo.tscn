@@ -1,0 +1,74 @@
+[gd_scene load_steps=7 format=1]
+
+[ext_resource path="res://Scenes/Scripts/Disparo.gd" type="Script" id=1]
+[ext_resource path="res://Dino/fireball.png" type="Texture" id=2]
+[ext_resource path="res://Dino/fireball2.png" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ { "frames":[ ExtResource( 2 ), ExtResource( 3 ) ], "loop":true, "name":"default", "speed":5.0 } ]
+
+[sub_resource type="Animation" id=3]
+
+resource/name = "disparo"
+length = 0.5
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/imported = false
+tracks/0/keys = { "times":FloatArray( 0, 0.3 ), "transitions":FloatArray( 1, 1 ), "update":1, "values":[ 0, 1 ] }
+
+[node name="Disparo" type="Node2D"]
+
+script/script = ExtResource( 1 )
+
+[node name="Disparo" type="Area2D" parent="."]
+
+input/pickable = true
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 2.24255, -0.0379451, 0.0355848, 2.10306, 29.2181, 23.8678 )
+shapes/0/trigger = false
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+__meta__ = { "_edit_lock_":true }
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Disparo"]
+
+transform/pos = Vector2( 29.2181, 23.8678 )
+transform/rot = 0.96938
+transform/scale = Vector2( 2.24287, 2.10336 )
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Disparo"]
+
+transform/pos = Vector2( 28.9059, 24.6197 )
+transform/rot = 62.756
+transform/scale = Vector2( 0.151113, 0.117856 )
+frames = SubResource( 2 )
+animation = "default"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Disparo/AnimatedSprite"]
+
+playback/process_mode = 1
+playback/default_blend_time = 0.0
+root/root = NodePath("..")
+anims/disparo = SubResource( 3 )
+playback/active = true
+playback/speed = 1.0
+blend_times = [  ]
+autoplay = ""
+
+[connection signal="area_enter" from="Disparo" to="." method="_on_Disparo_area_enter"]
+
+
