@@ -5,8 +5,8 @@ var kine
 
 func _ready():
 	set_fixed_process(true)
-	anim = get_node("KinematicBody2D/AnimatedSprite/AnimationPlayer")
-	kine = get_node("KinematicBody2D")
+	anim = get_node("DinoKine/AnimatedSprite/AnimationPlayer")
+	kine = get_node("DinoKine")
 	anim.play("voar")
 	
 	
@@ -19,7 +19,7 @@ func _fixed_process(delta):
 	if Input.is_action_pressed("ui_down"):
 		movi += Vector2(0, 1)
 	
-	movi = movi * 100 * delta
+	movi = movi * 200 * delta
 	kine.move(movi)
 
 func _voar_novamente():

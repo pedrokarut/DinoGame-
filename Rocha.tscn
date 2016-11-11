@@ -19,7 +19,7 @@ animations = [ { "frames":[ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 )
 
 resource/name = "explosion"
 length = 0.6
-loop = false
+loop = true
 step = 0.01
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:frame")
@@ -31,11 +31,6 @@ tracks/1/path = NodePath("../..")
 tracks/1/interp = 1
 tracks/1/imported = false
 tracks/1/keys = { "times":FloatArray( 0, 0.03 ), "transitions":FloatArray( 1, 1 ), "values":[ { "args":[  ], "method":"_play_explosion" }, { "args":[  ], "method":"queue_free" } ] }
-tracks/2/type = "value"
-tracks/2/path = NodePath(".:transform/pos")
-tracks/2/interp = 1
-tracks/2/imported = false
-tracks/2/keys = { "times":FloatArray( 0, 0.01, 0.02 ), "transitions":FloatArray( 1, 1, 1 ), "update":0, "values":[ Vector2( 24.4866, 108.83 ), Vector2( 25.1668, 110.19 ), Vector2( 47.613, 46.2526 ) ] }
 
 [sub_resource type="SampleLibrary" id=4]
 
@@ -49,7 +44,7 @@ script/script = ExtResource( 1 )
 
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
-shapes/0/transform = Matrix32( 4.387, 0, 0, 4.57553, 48.9941, 46.4818 )
+shapes/0/transform = Matrix32( 4.387, 0, 0, 4.57553, 50.6643, 48.152 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -59,7 +54,7 @@ __meta__ = { "_edit_lock_":true }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 
-transform/pos = Vector2( 48.9941, 46.4818 )
+transform/pos = Vector2( 50.6643, 48.152 )
 transform/scale = Vector2( 4.387, 4.57553 )
 shape = SubResource( 1 )
 trigger = false
@@ -67,10 +62,12 @@ _update_shape_index = 0
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Area2D"]
 
-transform/pos = Vector2( 24.4866, 108.83 )
-transform/scale = Vector2( 0.726479, 0.704084 )
+transform/pos = Vector2( 19.5757, 11.8387 )
+transform/rot = -659.333
+transform/scale = Vector2( 0.707726, 0.706911 )
 frames = SubResource( 2 )
 animation = "default"
+flip_v = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Area2D/AnimatedSprite"]
 
