@@ -14,7 +14,27 @@ func _fixed_process(delta):
 
 func _on_Disparo_area_enter( area ):
 	var nome = area.get_name()
-	print("Colidiu com o disparo: " + nome)
+		
 	if "Area" in nome:
 		queue_free()
 	
+	if "DisparoInimigo" in nome:
+		queue_free()
+	
+	if "Enemy2D" in nome:
+	
+		if area.get_parent().get_parent().get_parent().get_parent().get_child(14).get_child(0).is_visible():
+			area.get_parent().get_parent().get_parent().get_parent().get_child(14).get_child(0).hide()
+		elif area.get_parent().get_parent().get_parent().get_parent().get_child(14).get_child(1).is_visible():
+			area.get_parent().get_parent().get_parent().get_parent().get_child(14).get_child(1).hide()
+		elif area.get_parent().get_parent().get_parent().get_parent().get_child(14).get_child(2).is_visible():
+			area.get_parent().get_parent().get_parent().get_parent().get_child(14).get_child(2).hide()
+		elif area.get_parent().get_parent().get_parent().get_parent().get_child(14).get_child(3).is_visible():
+			area.get_parent().get_parent().get_parent().get_parent().get_child(14).get_child(3).hide()
+		elif area.get_parent().get_parent().get_parent().get_parent().get_child(14).get_child(4).is_visible():
+			area.get_parent().get_parent().get_parent().get_parent().get_child(14).get_child(4).hide()
+		else:
+			print("Enemy Died!")
+
+
+

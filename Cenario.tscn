@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=1]
+[gd_scene load_steps=17 format=1]
 
 [ext_resource path="res://Scenes/Scripts/Cenario.gd" type="Script" id=1]
 [ext_resource path="res://Dino/cenario.png" type="Texture" id=2]
@@ -6,8 +6,14 @@
 [ext_resource path="res://Importadas/titulo.fnt" type="BitmapFont" id=4]
 [ext_resource path="res://Importadas/bigger.fnt" type="BitmapFont" id=5]
 [ext_resource path="res://Importadas/grande.fnt" type="BitmapFont" id=6]
-[ext_resource path="res://Scenes/Enemy.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Dino/head.png" type="Texture" id=8]
+[ext_resource path="res://Dino/head.png" type="Texture" id=7]
+[ext_resource path="res://Dino/head enemy.png" type="Texture" id=8]
+[ext_resource path="res://Dino/shoot button.png" type="Texture" id=9]
+[ext_resource path="res://Dino/shoot button pressed.png" type="Texture" id=10]
+[ext_resource path="res://Dino/uo button.png" type="Texture" id=11]
+[ext_resource path="res://Dino/up button pressed.png" type="Texture" id=12]
+[ext_resource path="res://Dino/down button.png" type="Texture" id=13]
+[ext_resource path="res://Dino/down button pressed.png" type="Texture" id=14]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -33,7 +39,7 @@ __meta__ = { "_edit_lock_":true }
 [node name="Dino" parent="." instance=ExtResource( 3 )]
 
 editor/display_folded = true
-transform/pos = Vector2( 165.831, 312.183 )
+transform/pos = Vector2( 156.578, 215.951 )
 transform/scale = Vector2( 0.314392, 0.343199 )
 
 [node name="Rocha" type="Timer" parent="."]
@@ -119,9 +125,9 @@ focus/ignore_mouse = true
 focus/stop_mouse = true
 size_flags/horizontal = 2
 size_flags/vertical = 0
-margin/left = 464.0
+margin/left = 531.0
 margin/top = 16.0
-margin/right = 616.0
+margin/right = 683.0
 margin/bottom = 73.0
 custom_fonts/font = ExtResource( 4 )
 custom_colors/font_color = Color( 0.988281, 0.880188, 0, 1 )
@@ -140,7 +146,7 @@ autostart = true
 [node name="Rocha level 3" type="Timer" parent="Timer Nível 3"]
 
 process_mode = 1
-wait_time = 0.3
+wait_time = 0.35
 one_shot = false
 autostart = false
 
@@ -206,6 +212,7 @@ max_lines_visible = -1
 
 [node name="PanelGameOver" type="Panel" parent="."]
 
+process/pause_mode = 2
 editor/display_folded = true
 visibility/visible = false
 focus/ignore_mouse = false
@@ -236,6 +243,7 @@ max_lines_visible = -1
 
 [node name="btTryAgain" type="Button" parent="PanelGameOver"]
 
+process/pause_mode = 2
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -254,6 +262,7 @@ flat = false
 
 [node name="btExit" type="Button" parent="PanelGameOver"]
 
+process/pause_mode = 2
 focus/ignore_mouse = false
 focus/stop_mouse = true
 size_flags/horizontal = 2
@@ -270,30 +279,62 @@ shortcut = null
 text = "Exit"
 flat = false
 
-[node name="Enemy" parent="." instance=ExtResource( 7 )]
-
-transform/pos = Vector2( 677.787, 413.85 )
-transform/scale = Vector2( 0.411869, 0.465961 )
-
 [node name="Dino Vida" type="Node2D" parent="."]
 
+editor/display_folded = true
 transform/pos = Vector2( -125.229, -28.238 )
 
 [node name="Dino Vida 1" type="Sprite" parent="Dino Vida"]
 
-transform/pos = Vector2( 174.67, 77.4594 )
+transform/pos = Vector2( 154.67, 77.4594 )
 transform/scale = Vector2( 0.162854, 0.193834 )
-texture = ExtResource( 8 )
+texture = ExtResource( 7 )
 
 [node name="Dino Vida 2" type="Sprite" parent="Dino Vida"]
 
-transform/pos = Vector2( 224.67, 77.4594 )
+transform/pos = Vector2( 204.67, 77.4594 )
 transform/scale = Vector2( 0.162854, 0.193834 )
-texture = ExtResource( 8 )
+texture = ExtResource( 7 )
 
 [node name="Dino Vida 3" type="Sprite" parent="Dino Vida"]
 
-transform/pos = Vector2( 277.67, 77.4594 )
+transform/pos = Vector2( 257.67, 77.4594 )
+transform/scale = Vector2( 0.162854, 0.193834 )
+texture = ExtResource( 7 )
+
+[node name="Enemy Vida" type="Node2D" parent="."]
+
+editor/display_folded = true
+visibility/visible = false
+transform/pos = Vector2( 724.634, -35.9942 )
+
+[node name="Enemy Vida 1" type="Sprite" parent="Enemy Vida"]
+
+transform/pos = Vector2( 50.2062, 60.7766 )
+transform/scale = Vector2( 0.162854, 0.193834 )
+texture = ExtResource( 8 )
+
+[node name="Enemy Vida2" type="Sprite" parent="Enemy Vida"]
+
+transform/pos = Vector2( 100.206, 60.7766 )
+transform/scale = Vector2( 0.162854, 0.193834 )
+texture = ExtResource( 8 )
+
+[node name="Enemy Vida3" type="Sprite" parent="Enemy Vida"]
+
+transform/pos = Vector2( 150.206, 60.7766 )
+transform/scale = Vector2( 0.162854, 0.193834 )
+texture = ExtResource( 8 )
+
+[node name="Enemy Vida4" type="Sprite" parent="Enemy Vida"]
+
+transform/pos = Vector2( 200.206, 60.7766 )
+transform/scale = Vector2( 0.162854, 0.193834 )
+texture = ExtResource( 8 )
+
+[node name="Enemy Vida5" type="Sprite" parent="Enemy Vida"]
+
+transform/pos = Vector2( 250.206, 60.7766 )
 transform/scale = Vector2( 0.162854, 0.193834 )
 texture = ExtResource( 8 )
 
@@ -302,7 +343,54 @@ texture = ExtResource( 8 )
 process_mode = 1
 wait_time = 1.0
 one_shot = false
+autostart = false
+
+[node name="Rochas Geradas" type="Node2D" parent="."]
+
+[node name="Timer Enemy" type="Timer" parent="."]
+
+process_mode = 1
+wait_time = 5.0
+one_shot = true
 autostart = true
+
+[node name="Buttons" type="Node2D" parent="."]
+
+[node name="Shoot Button" type="TouchScreenButton" parent="Buttons"]
+
+transform/pos = Vector2( 139.964, 443.777 )
+transform/rot = 179.651
+transform/scale = Vector2( 0.319355, -0.310219 )
+normal = ExtResource( 9 )
+pressed = ExtResource( 10 )
+bitmask = null
+passby_press = false
+action = "shoot"
+visibility_mode = 0
+
+[node name="Up Button" type="TouchScreenButton" parent="Buttons"]
+
+transform/pos = Vector2( 819.964, 453.777 )
+transform/rot = 179.651
+transform/scale = Vector2( 0.319355, -0.310219 )
+normal = ExtResource( 11 )
+pressed = ExtResource( 12 )
+bitmask = null
+passby_press = false
+action = "ui_up"
+visibility_mode = 0
+
+[node name="Down Button" type="TouchScreenButton" parent="Buttons"]
+
+transform/pos = Vector2( 989.964, 452.561 )
+transform/rot = 179.651
+transform/scale = Vector2( 0.319355, -0.310219 )
+normal = ExtResource( 13 )
+pressed = ExtResource( 14 )
+bitmask = null
+passby_press = false
+action = "ui_down"
+visibility_mode = 0
 
 [connection signal="timeout" from="Rocha" to="." method="_on_Rocha_timeout"]
 
@@ -318,7 +406,11 @@ autostart = true
 
 [connection signal="area_enter" from="Remove Meteoros" to="." method="_on_Remove_Meteoros_area_enter"]
 
+[connection signal="pressed" from="PanelGameOver/btTryAgain" to="." method="_on_btTryAgain_pressed"]
+
 [connection signal="timeout" from="Enemy Shoot" to="." method="_on_Enemy_Shoot_timeout"]
+
+[connection signal="timeout" from="Timer Enemy" to="." method="_on_Timer_Enemy_timeout"]
 
 
 [editable path="Dino"]

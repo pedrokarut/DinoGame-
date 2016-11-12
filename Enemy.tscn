@@ -4,22 +4,22 @@
 [ext_resource path="res://Dino/dino enemy.png" type="Texture" id=2]
 [ext_resource path="res://Dino/flying enemy dino.png" type="Texture" id=3]
 
-[sub_resource type="Curve2D" id=4]
+[sub_resource type="Curve2D" id=1]
 
 bake_interval = 5.0
 _data = { "points":Vector2Array( 0, 0, 0, 0, 5.42969, 446.206, 0, 0, 0, 0, 3.37335, -472.706, 0, 0, 0, 0, 28.9466, -472.727, 0, 0, 0, 0, 30.143, 446.056, 0, 0, 0, 0, 5.31107, 446.169 ) }
 
-[sub_resource type="CapsuleShape2D" id=1]
+[sub_resource type="CapsuleShape2D" id=2]
 
 custom_solver_bias = 0.0
 radius = 10.0
 height = 13.7597
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="SpriteFrames" id=3]
 
 animations = [ { "frames":[ ExtResource( 2 ), ExtResource( 3 ) ], "loop":true, "name":"default", "speed":5.0 } ]
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=4]
 
 length = 0.6
 loop = true
@@ -51,10 +51,11 @@ autostart = true
 
 [node name="Path2D" type="Path2D" parent="."]
 
-curve = SubResource( 4 )
+curve = SubResource( 1 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
 
+editor/display_folded = true
 transform/pos = Vector2( 5.42969, 446.206 )
 transform/rot = 89.6985
 offset = 0.0
@@ -65,12 +66,13 @@ cubic_interp = true
 loop = true
 lookahead = 4.0
 
-[node name="Area2D" type="Area2D" parent="Path2D/PathFollow2D"]
+[node name="Enemy2D" type="Area2D" parent="Path2D/PathFollow2D"]
 
+editor/display_folded = true
 transform/pos = Vector2( 406.834, -37.1048 )
 transform/rot = -89.6985
 input/pickable = true
-shapes/0/shape = SubResource( 1 )
+shapes/0/shape = SubResource( 2 )
 shapes/0/transform = Matrix32( 14.827, 0, 0, 10.3865, 497.928, 173.184 )
 shapes/0/trigger = false
 gravity_vec = Vector2( 0, 1 )
@@ -79,29 +81,29 @@ linear_damp = 0.1
 angular_damp = 1.0
 __meta__ = { "_edit_lock_":true }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Enemy2D"]
 
 transform/pos = Vector2( 497.928, 173.184 )
 transform/scale = Vector2( 14.827, 10.3865 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 trigger = false
 _update_shape_index = 0
 __meta__ = { "_edit_lock_":true }
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Path2D/PathFollow2D/Area2D"]
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Path2D/PathFollow2D/Enemy2D"]
 
 transform/pos = Vector2( 499.87, 216.818 )
-frames = SubResource( 2 )
+frames = SubResource( 3 )
 animation = "default"
 frame = 1
 __meta__ = { "_edit_lock_":true }
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Path2D/PathFollow2D/Area2D/AnimatedSprite"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Path2D/PathFollow2D/Enemy2D/AnimatedSprite"]
 
 playback/process_mode = 1
 playback/default_blend_time = 0.0
 root/root = NodePath("..")
-anims/voar = SubResource( 3 )
+anims/voar = SubResource( 4 )
 playback/active = true
 playback/speed = 1.0
 blend_times = [  ]

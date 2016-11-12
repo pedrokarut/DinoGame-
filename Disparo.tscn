@@ -27,6 +27,7 @@ tracks/0/keys = { "times":FloatArray( 0, 0.3 ), "transitions":FloatArray( 1, 1 )
 
 [node name="Disparo" type="Node2D"]
 
+transform/rot = -1.07122
 script/script = ExtResource( 1 )
 
 [node name="Disparo" type="Area2D" parent="."]

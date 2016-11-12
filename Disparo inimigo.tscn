@@ -12,7 +12,7 @@ radius = 174.794
 
 script/script = ExtResource( 1 )
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="DisparoInimigo" type="Area2D" parent="."]
 
 input/pickable = true
 shapes/0/shape = SubResource( 1 )
@@ -24,7 +24,7 @@ linear_damp = 0.1
 angular_damp = 1.0
 __meta__ = { "_edit_lock_":true }
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DisparoInimigo"]
 
 transform/pos = Vector2( 356.74, 216.303 )
 transform/rot = -14.8991
@@ -40,6 +40,6 @@ transform/rot = -84.6028
 texture = ExtResource( 2 )
 __meta__ = { "_edit_lock_":true }
 
-[connection signal="body_enter" from="Area2D" to="." method="_on_Area2D_body_enter"]
+[connection signal="body_enter" from="DisparoInimigo" to="." method="_on_Area2D_body_enter"]
 
 

@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=1]
+[gd_scene load_steps=9 format=1]
 
 [ext_resource path="res://Scenes/Scripts/Rocha.gd" type="Script" id=1]
 [ext_resource path="res://Dino/rock.png" type="Texture" id=2]
 [ext_resource path="res://Dino/rock 2.png" type="Texture" id=3]
-[ext_resource path="res://Dino/rock 3.png" type="Texture" id=4]
-[ext_resource path="res://Imported Sounds/Grenade Explosion.smp" type="Sample" id=5]
+[ext_resource path="res://Imported Sounds/Grenade Explosion.smp" type="Sample" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -13,7 +12,7 @@ radius = 10.0
 
 [sub_resource type="SpriteFrames" id=2]
 
-animations = [ { "frames":[ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ) ], "loop":true, "name":"default", "speed":5.0 } ]
+animations = [ { "frames":[ ExtResource( 2 ), ExtResource( 3 ), null ], "loop":true, "name":"default", "speed":5.0 } ]
 
 [sub_resource type="Animation" id=3]
 
@@ -34,7 +33,7 @@ tracks/1/keys = { "times":FloatArray( 0, 0.03 ), "transitions":FloatArray( 1, 1 
 
 [sub_resource type="SampleLibrary" id=4]
 
-samples/Explosion = { "db":0.0, "pitch":1.0, "sample":ExtResource( 5 ) }
+samples/Explosion = { "db":0.0, "pitch":1.0, "sample":ExtResource( 4 ) }
 
 [node name="Rocha" type="Node2D"]
 
