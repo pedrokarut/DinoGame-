@@ -9,7 +9,7 @@ func _ready():
 	kine = get_node("DinoKine")
 	anim.play("voar")
 	
-	
+#code to make the movementation 
 func _fixed_process(delta):
 	var movi = Vector2()
 	

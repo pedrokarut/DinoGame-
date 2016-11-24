@@ -27,7 +27,9 @@ extents = Vector2( 10, 10 )
 
 [node name="Cenario" type="Node2D"]
 
+transform/pos = Vector2( -1, -1 )
 script/script = ExtResource( 1 )
+__meta__ = { "_edit_lock_":true }
 
 [node name="Sprite" type="Sprite" parent="."]
 
@@ -130,7 +132,7 @@ margin/top = 16.0
 margin/right = 683.0
 margin/bottom = 73.0
 custom_fonts/font = ExtResource( 4 )
-custom_colors/font_color = Color( 0.988281, 0.880188, 0, 1 )
+custom_colors/font_color = Color( 0.164062, 0.143555, 0.143555, 1 )
 percent_visible = 1.0
 lines_skipped = 0
 max_lines_visible = -1
@@ -341,7 +343,7 @@ texture = ExtResource( 8 )
 [node name="Enemy Shoot" type="Timer" parent="."]
 
 process_mode = 1
-wait_time = 1.0
+wait_time = 0.8
 one_shot = false
 autostart = false
 
@@ -354,7 +356,78 @@ wait_time = 5.0
 one_shot = true
 autostart = true
 
+[node name="Panel Win" type="Panel" parent="."]
+
+process/pause_mode = 2
+editor/display_folded = true
+visibility/visible = false
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 284.0
+margin/top = 98.0
+margin/right = 791.0
+margin/bottom = 458.0
+
+[node name="lblGameOver" type="Label" parent="Panel Win"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 139.0
+margin/top = 72.0
+margin/right = 373.0
+margin/bottom = 129.0
+custom_fonts/font = ExtResource( 4 )
+custom_colors/font_color = Color( 0.0352941, 1, 0.298039, 1 )
+text = "YOU WON!"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="btTryAgainWin" type="Button" parent="Panel Win"]
+
+process/pause_mode = 2
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 199.0
+margin/top = 213.0
+margin/right = 306.0
+margin/bottom = 248.0
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 0.0352941, 1, 0.298039, 1 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Play Again"
+flat = false
+
+[node name="btExit" type="Button" parent="Panel Win"]
+
+process/pause_mode = 2
+focus/ignore_mouse = false
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 2
+margin/left = 199.0
+margin/top = 263.0
+margin/right = 319.0
+margin/bottom = 298.0
+custom_fonts/font = ExtResource( 6 )
+custom_colors/font_color = Color( 0.0352941, 1, 0.298039, 1 )
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+text = "Exit"
+flat = false
+
 [node name="Buttons" type="Node2D" parent="."]
+
+editor/display_folded = true
 
 [node name="Shoot Button" type="TouchScreenButton" parent="Buttons"]
 
@@ -408,9 +481,13 @@ visibility_mode = 0
 
 [connection signal="pressed" from="PanelGameOver/btTryAgain" to="." method="_on_btTryAgain_pressed"]
 
+[connection signal="pressed" from="PanelGameOver/btExit" to="." method="_on_btExit_pressed"]
+
 [connection signal="timeout" from="Enemy Shoot" to="." method="_on_Enemy_Shoot_timeout"]
 
 [connection signal="timeout" from="Timer Enemy" to="." method="_on_Timer_Enemy_timeout"]
+
+[connection signal="pressed" from="Panel Win/btTryAgainWin" to="." method="_on_btTryAgainWin_pressed"]
 
 
 [editable path="Dino"]

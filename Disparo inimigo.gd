@@ -8,7 +8,9 @@ func _fixed_process(delta):
 	pos.x -= 350 * delta
 	set_pos(pos)
 	
-	
+
+#check if the green dino has been hit and if it has been hit plays 
+#the animation and decreses the life number 
 func _on_Area2D_body_enter( body ):
 	var nome = body.get_name()
 	if "DinoKine" in nome:
